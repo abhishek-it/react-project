@@ -1,11 +1,24 @@
 import classes from "./PostLists.module.css"
 import Post from "./Post";
+import NewPost from "./NewPost";
+import { useState } from "react";
 function Postlist() {
+    const [text , setText] = useState("");
+    const [name , setName] = useState("");
+    function handlText(event){
+        setText(event.target.value);
+    }
+    function handleName(event){
+        setName(event.target.value);
+    }
     return (
+        <>
+        <NewPost ontext = {handlText} onname = {handleName} />
         <ul className = {classes.posts}>
-        <Post author = "Rehan" body = "Rehan is the tester for fcra"/>
-        <Post author = "Adityuan" body = "His cr are going to handopver to me"/>
+        <Post author = {name} body = {text} />
+        <Post author ={name} body ={text}/>
         </ul>
+        </>
     )
 }
 export default Postlist;
