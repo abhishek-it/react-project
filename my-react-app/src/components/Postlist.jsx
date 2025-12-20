@@ -3,9 +3,9 @@ import Post from "./Post";
 import NewPost from "./NewPost";
 import { useState } from "react";
 import Modal from "./Modal";
-function Postlist() {
-    //here we will declare a state to define visible and not
-    const [isVisible , setVisible] = useState(true);
+function Postlist({isPosting , isnotPosting}) {
+    
+   
     const [text , setText] = useState("");
     const [name , setName] = useState("");
 
@@ -21,8 +21,8 @@ function Postlist() {
     }
     return (
         <>
-        {isVisible ?
-        <Modal onClose = {setVisibility}>
+        {isPosting ?
+        <Modal onClose = {isnotPosting}>
         <NewPost ontext = {handlText} onname = {handleName} />
         </Modal> :false}
         <ul className = {classes.posts}>
